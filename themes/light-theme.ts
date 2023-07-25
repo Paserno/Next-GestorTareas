@@ -20,7 +20,14 @@ export const lightTheme = createTheme({
     },
 
     components: {
-        //TODO: sacar elevacion
+      MuiAppBar: {
+        defaultProps: {
+          elevation: 0,
+      },
+        styleOverrides: {
+            
+        }
+    }
     }
   });
   
