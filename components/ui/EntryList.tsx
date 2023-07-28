@@ -13,10 +13,16 @@ export const EntryList: FC<Props> = ({ status }) => {
     const { entries } = useContext(EntriesContext);
 
     const entriesByStatus = useMemo(() => entries.filter(entry => entry.status === status), [entries]);
-    
+
     return (
         <div>
-            <Paper sx={{ height: 'calc(100vh - 180px)', overflow: 'auto', backgroundColor: 'transparent', padding: '1px 5px' }}>
+            <Paper sx={{
+                height: 'calc(100vh - 160px)',
+                overflow: 'auto',
+                backgroundColor: 'transparent',
+                padding: '1px 5px',
+                '&::-webkit-scrollbar': { display: 'none' }
+            }}>
                 <List sx={{ opacity: 1 }}>
                     {
                         entriesByStatus.map(entry => (

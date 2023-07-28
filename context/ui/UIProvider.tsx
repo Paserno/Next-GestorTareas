@@ -12,7 +12,7 @@ const UI_INITIAL_STATE: UIState = {
 
 export const UIProvider: FC<PropsWithChildren> = ({ children }) => {
 
-    const [state, dispatch] = useReducer(uiReducer, UI_INITIAL_STATE)
+    const [state, dispatch] = useReducer(uiReducer, UI_INITIAL_STATE);
 
     const openSideMenu = () => {
         dispatch({ type: 'UI - Open Sidebar'});
