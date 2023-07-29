@@ -3,6 +3,8 @@ import { Entry } from '../../interfaces';
 import { DragEvent, FC, useContext, useState } from 'react';
 import { UIContext } from '../../context/ui';
 
+import StickyNote2Icon from '@mui/icons-material/StickyNote2';
+
 interface Props {
     entry: Entry;
 }
@@ -12,9 +14,11 @@ export const EntryCard: FC<Props> = ({ entry }) => {
     const { startDragging, endDragging } = useContext(UIContext);
     const [isDragging, setIsDragging] = useState(false);
 
+    
+
     const onDragStart = (event: DragEvent) => {
         event.dataTransfer.setData('text', entry._id);
-        // event.target.addEventListener.
+        // event.dataTransfer.setDragImage(, 0 , 0);
         setIsDragging(true)
         startDragging();
     }
