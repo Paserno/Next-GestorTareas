@@ -9,7 +9,7 @@ interface Props {
     children?: React.ReactNode | undefined;
 }
 
-export const Layout: FC<Props> = ({ title = 'OpenJira', children }) => {
+export const Layout: FC<Props> = ({ title = 'OpenTrello', children }) => {
     return (
         <Box sx={{ flexFlow: 1 }}>
             <Head>

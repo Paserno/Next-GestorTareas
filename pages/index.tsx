@@ -7,7 +7,7 @@ import { EntryList, NewEntry } from '../components/ui';
 
 const HomePage: NextPage = () => {
   return (
-    <Layout title='Home - OpenJira'>
+    <Layout title='Home - OpenTrello'>
 
       <Grid container spacing={2} justifyContent="center">
         <Grid item xs={12} sm={9} md={4}  >

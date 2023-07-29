@@ -16,7 +16,7 @@ export const Navbar = () => {
                 >
                     <MenuOutlinedIcon />
                 </IconButton>
-                <Typography variant='h6'>OpenJira</Typography>
+                <Typography variant='h6'>OpenTrello</Typography>
             </Toolbar>
 
         </AppBar>
