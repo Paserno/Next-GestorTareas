@@ -49,7 +49,7 @@ export const EntryList: FC<Props> = ({ status }) => {
             }}>
 
 
-                <List sx={{ opacity: isDragging ? 0.3 : 1, transition: 'all .3s' }}>
+                <List sx={{ opacity: isDragging ? 0.3 : 1, transition: 'all .3s', marginBottom: -10 }}>
                     {
                         entriesByStatus.map(entry => (
                             <EntryCard key={entry._id} entry={entry} />
