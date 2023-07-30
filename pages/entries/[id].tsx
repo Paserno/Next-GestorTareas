@@ -10,6 +10,8 @@ import { dbEntries } from '../../database';
 import { Layout } from "../../components/layouts";
 import { EntryStauts, Entry } from '../../interfaces';
 import { EntriesContext } from '../../context/entries';
+import { dateFunctions } from '../../utils';
+import { useRouter } from 'next/router';
 
 
 
@@ -23,6 +25,7 @@ interface Props {
 const EntryPage: FC<Props> = ({ entry }) => {
 
     const { updateEntry } = useContext(EntriesContext);
+    const router = useRouter();
 
 
     const [inputValue, setInputValue] = useState(entry.description);
@@ -49,6 +52,10 @@ const EntryPage: FC<Props> = ({ entry }) => {
         }
 
         updateEntry( updatedEntry, true );
+        setTimeout(() => {
+            router.back();
+            
+        }, 500);
     }
 
     return (
@@ -62,7 +69,7 @@ const EntryPage: FC<Props> = ({ entry }) => {
                     <Card>
                         <CardHeader
                             title={`Entrada: `}
-                            subheader={`Creada hace: ${entry.createdAt} minutos`}
+                            subheader={`Creada hace: ${dateFunctions.getFormatDistanceToNow(entry.createdAt) }`}
                         />
 
                         <CardContent>
