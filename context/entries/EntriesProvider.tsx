@@ -9,26 +9,7 @@ export interface EntriesState {
 }
 
 const ENTRIES_INITIAL_STATE: EntriesState = {
-    entries: [
-        {
-            _id: uuidv4(),
-            description: 'Pending: Duis aute ad ullamco cillum veniam est esse in esse duis incididunt.',
-            status: 'pending',
-            createdAt: Date.now()
-        },
-        {
-            _id: uuidv4(),
-            description: 'In-progress: Pariatur ipsum consectetur velit voluptate officia sit veniam ex proident.',
-            status: 'in-progress',
-            createdAt: Date.now() - 1000000
-        },
-        {
-            _id: uuidv4(),
-            description: 'Finished: Ut tempor cillum velit fugiat ad nisi duis deserunt sint ut et.',
-            status: 'finished',
-            createdAt: Date.now() - 100000
-        },
-    ],
+    entries: [],
 }
 
 
