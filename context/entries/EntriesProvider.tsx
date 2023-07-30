@@ -27,7 +27,7 @@ export const EntriesProvider: FC<PropsWithChildren> = ({ children }) => {
 
     }
 
-    const updateEntry = async ({ _id, description, status }: Entry, showSnackbar: boolean = false ) => {
+    const updateEntry = async ({ _id, description, status }: Entry, showSnackbar: boolean = false) => {
         try {
             const { data } = await entriesApi.put<Entry>(`/entries/${_id}`, { description, status });
             dispatch({ type: '[Entry] - Update-Entry', payload: data });
@@ -57,12 +57,33 @@ export const EntriesProvider: FC<PropsWithChildren> = ({ children }) => {
         refreshEntry()
     }, [])
 
+    const deleteEntry = async ({ _id }: Entry) => {
+        try {
+            const { data } = await entriesApi.delete<Entry>(`/entries/${_id}`);
+            dispatch({ type: '[Entry] - Delete-Data', payload: data});
+
+            enqueueSnackbar('Entrada Borrada', {
+                variant: 'success',
+                autoHideDuration: 1500,
+                anchorOrigin: {
+                    vertical: 'top',
+                    horizontal: 'right'
+                }
+            })
+
+        } catch (error) {
+            console.log({ error });
+        }
+
+    }
+
 
     return (
         <EntriesContext.Provider value={{
             ...state,
             addNewEntry,
             updateEntry,
+            deleteEntry,
         }}>
             {children}
         </EntriesContext.Provider>

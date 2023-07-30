@@ -5,7 +5,8 @@ import { Entry } from '../../interfaces';
 interface ContextProps {
     entries: Entry[];
     addNewEntry: (description: string) => void;
-    updateEntry: (entry: Entry, showSnackbar?: boolean) => void;
+    updateEntry: (entry: Entry, showSnackbar?: boolean) => Promise<void>;
+    deleteEntry: (entry: Entry) => Promise<void>;
 }
 
 

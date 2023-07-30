@@ -24,7 +24,7 @@ interface Props {
 
 const EntryPage: FC<Props> = ({ entry }) => {
 
-    const { updateEntry } = useContext(EntriesContext);
+    const { updateEntry, deleteEntry } = useContext(EntriesContext);
     const router = useRouter();
 
 
@@ -43,7 +43,7 @@ const EntryPage: FC<Props> = ({ entry }) => {
     }
 
     const onSave = () => {
-        if( inputValue.trim().length === 0) return;
+        if (inputValue.trim().length === 0) return;
 
         const updatedEntry: Entry = {
             ...entry,
@@ -51,11 +51,20 @@ const EntryPage: FC<Props> = ({ entry }) => {
             description: inputValue
         }
 
-        updateEntry( updatedEntry, true );
+        updateEntry(updatedEntry, true);
         setTimeout(() => {
             router.back();
-            
+
         }, 500);
+    }
+
+    const onDelete = () => {
+        deleteEntry(entry);
+
+        setTimeout(() => {
+            router.back();
+        }, 300);
+
     }
 
     return (
@@ -69,7 +78,7 @@ const EntryPage: FC<Props> = ({ entry }) => {
                     <Card>
                         <CardHeader
                             title={`Entrada: `}
-                            subheader={`Creada hace: ${dateFunctions.getFormatDistanceToNow(entry.createdAt) }`}
+                            subheader={`Creada hace: ${dateFunctions.getFormatDistanceToNow(entry.createdAt)}`}
                         />
 
                         <CardContent>
@@ -136,6 +145,7 @@ const EntryPage: FC<Props> = ({ entry }) => {
                 right: 30,
                 backgroundColor: 'error.dark',
             }}
+                onClick={onDelete}
             >
                 <DeleteIcon />
             </IconButton>
