@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, useMemo, FC } from 'react';
+import { useState, ChangeEvent, useMemo, FC, useContext } from 'react';
 import { GetServerSideProps } from 'next';
 
 import { Grid, Card, CardHeader, CardContent, TextField, CardActions, Button, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, capitalize, IconButton } from '@mui/material';
@@ -9,6 +9,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { dbEntries } from '../../database';
 import { Layout } from "../../components/layouts";
 import { EntryStauts, Entry } from '../../interfaces';
+import { EntriesContext } from '../../context/entries';
 
 
 
@@ -20,6 +21,8 @@ interface Props {
 
 
 const EntryPage: FC<Props> = ({ entry }) => {
+
+    const { updateEntry } = useContext(EntriesContext);
 
 
     const [inputValue, setInputValue] = useState(entry.description);
@@ -37,7 +40,15 @@ const EntryPage: FC<Props> = ({ entry }) => {
     }
 
     const onSave = () => {
-        console.log({ inputValue, status })
+        if( inputValue.trim().length === 0) return;
+
+        const updatedEntry: Entry = {
+            ...entry,
+            status,
+            description: inputValue
+        }
+
+        updateEntry( updatedEntry, true );
     }
 
     return (
@@ -51,7 +62,7 @@ const EntryPage: FC<Props> = ({ entry }) => {
                     <Card>
                         <CardHeader
                             title={`Entrada: `}
-                            subheader={`Creada hace: ${ entry.createdAt} minutos`}
+                            subheader={`Creada hace: ${entry.createdAt} minutos`}
                         />
 
                         <CardContent>
