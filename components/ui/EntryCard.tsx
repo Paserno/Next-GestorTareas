@@ -3,6 +3,8 @@ import { Entry } from '../../interfaces';
 import { DragEvent, FC, useContext, useState } from 'react';
 import { UIContext } from '../../context/ui';
 
+import { useRouter } from 'next/router'
+
 import StickyNote2Icon from '@mui/icons-material/StickyNote2';
 
 interface Props {
@@ -13,6 +15,7 @@ export const EntryCard: FC<Props> = ({ entry }) => {
 
     const { startDragging, endDragging } = useContext(UIContext);
     const [isDragging, setIsDragging] = useState(false);
+    const router = useRouter();
 
     
 
@@ -28,9 +31,14 @@ export const EntryCard: FC<Props> = ({ entry }) => {
         setIsDragging(false);
     }
 
+    const onClick = () => {
+        router.push(`/entries/${entry._id}`)
+    }
+
 
     return (
         <Card
+            onClick={ onClick }
             sx={{ marginBottom: 1 }}
             draggable
             onDragStart={onDragStart}
