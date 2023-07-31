@@ -28,3 +28,13 @@ con el seed:
 ```
 http://localhost:3000/api/seed
 ```
+
+
+## Modulos utilizados
+
+* [Material UI](https://mui.com)
+* [Mongoose](https://mongoosejs.com)
+* [axios](https://axios-http.com/docs/intro)
+* Fechas / [date-fns](https://date-fns.org)
+* Notificaciones / [NotiStack](https://notistack.com/features/basic)
+* [uuid](https://github.com/uuidjs/uuid)
